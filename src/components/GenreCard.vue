@@ -2,15 +2,21 @@
   <div class="card">
     <div class="image-wrapper">
       <!-- Image Goes Here -->
+      <img :src="image" :alt="name">
     </div>
     <div class="info-wrapper flex-col">
       <!-- Genre Name Goes Here -->
+      {{name}}
     </div>
   </div>
 </template>
 
 <script>
   export default {
-    name: 'GenreCard'
+    name: 'GenreCard',
+    props: {
+      name: String, 
+      image: String
+    }
   }
 </script>

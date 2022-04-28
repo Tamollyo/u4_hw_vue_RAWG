@@ -8,12 +8,18 @@
 
     <div class="genres">
       <h2>Genres</h2>
-      <section class="container-grid"></section>
+      <section class="container-grid">
+        <GenreCard :key="genre.id" v-for="genre in genres" :image="genre.image_background" :name="genre.name"  />
+      </section>
     </div>
   </div>
 </template>
 
 <script>
+  import axios from 'axios'
+  import GenreCard from '../components/GenreCard.vue'
+  const API_KEY = process.env.VUE_APP_RAWG_KEY
+
   export default {
     name: 'HomePage',
     data: () => ({
@@ -22,9 +28,18 @@
       searchResults: [],
       searched: false
     }),
-    mounted() {},
+    components: {
+      GenreCard
+    },
+    mounted() {
+      this.getGenres()
+    },
     methods: {
-      async getGenres() {},
+      async getGenres() {
+        const res = await axios.get(`https://api.rawg.io/api/genres?key=${API_KEY}`)
+        console.log(res)
+        this.genres = res.data.results
+      },
       async getSearchResults(e) {
         e.preventDefault()
       },
