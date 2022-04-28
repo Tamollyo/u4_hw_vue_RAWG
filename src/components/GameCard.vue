@@ -8,6 +8,9 @@
       <!-- Game Name Goes Here -->
       {{name}}
     </div>
+    <div class="info-wrapper flex-col">
+      {{ rating}}
+    </div>
   </div>
 </template>
 
@@ -17,6 +20,7 @@
     props: {
       name: String, 
       image: String, 
+      rating: String
     }, 
   }
 </script>

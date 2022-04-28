@@ -8,14 +8,14 @@
       </form>
       <h2>Search Results</h2>
       <section  v-if="searched" class="search-results container-grid">
-        <GameCard :key="result.id" :gameId="result.id" v-for="result in searchResults" :image="result.background_image" :name="result.name" @click="selectGame(result.id)"/>
+        <GameCard :key="result.id" :gameId="result.id" v-for="result in searchResults" :image="result.background_image" :rating="result.rating" :name="result.name" @click="selectGame(result.id)"/>
       </section>
     </div>
 
     <div v-if="!searched" class="genres">
       <h2>Genres</h2>
       <section class="container-grid" >
-        <GenreCard :key="genre.id" v-for="genre in genres" :image="genre.image_background" :name="genre.name"/>
+        <GenreCard :key="genre.id" v-for="genre in genres" :image="genre.image_background" :name="genre.name" @click="selectGenre(genre.id)"/>
       </section>
     </div>
   </div>
@@ -62,6 +62,9 @@
       selectGame(gameId) {
         this.$router.push(`/details/${gameId}`)
         console.log(gameId)
+      },
+      selectGenre(genreId) {
+          this.$router.push(`/games/${genreId}`)
       }
     }
   }
