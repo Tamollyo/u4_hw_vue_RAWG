@@ -1,5 +1,8 @@
 <template>
   <div v-if="gameDetails" class="game-content">
+    <div class="back">
+       <button @click="back">Back</button>
+    </div>
     <section class="image-container">
       <div>
         <img :src="gameDetails.background_image" :alt="gameDetails.name">
@@ -36,6 +39,9 @@
         const res = await axios.get(`https://api.rawg.io/api/games/${gameId}?key=${API_KEY}`)
         console.log(res)
         this.gameDetails = res.data
+      }, 
+      back() {
+        this.$router.push(`/`)
       }
     }
   }

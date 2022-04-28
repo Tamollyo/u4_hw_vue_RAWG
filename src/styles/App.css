@@ -130,3 +130,9 @@ button {
 .space {
   justify-content: space-between;
 }
+
+.back {
+  display: flex;
+  justify-content: flex-end;
+  margin: 0 40px;
+}
